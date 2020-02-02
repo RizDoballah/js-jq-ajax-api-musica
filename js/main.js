@@ -5,39 +5,41 @@ $(document).ready(function() {
     'method' : 'GET',
     'success': function (data) {
       processData(data.response);
-      // $(document).on('change', 'select', function() {
-      //   var genre = $('select').val();
-      //   console.log(genre);
-      //   for (var i = 0; i < $('.cd').length; i++) {
-      //     if ($('.cd').eq(i).find('.genre').text() == genre) {
-      //       console.log($('.cd').eq(i).find('.genre').text());
-      //       $('.cd').eq(i).show();
-      //     } else {
-      //       $('.cd').eq(i).hide();
-      //     }
-      //   };
-      // });
-      $(document).on('change', 'select', function() {
-        var genre = $('select').val();
-        console.log(genre);
-        $('.cd').each(function(){
-          if ($(this).find('.genre').text() == genre) {
-            console.log($(this));
-            console.log($(this).find('.genre').text());
-            $(this).show();
-         } else {
-           $(this).hide();
-        }
-
-        });
-      });
-
     },
     'error' : function (request, state, errors) {
       alert('Errore ' + errors);
     }
 
   });
+
+  // funzione per selezionare il tipo di musica
+
+  $(document).on('change', 'select', function() {
+    var genre = $('select').val();
+    console.log(genre);
+    $('.cd').each(function(){
+      if ($(this).find('.genre').text() == genre) {
+        console.log($(this));
+        console.log($(this).find('.genre').text());
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+
+    });
+  });
+  // $(document).on('change', 'select', function() {
+    //   var genre = $('select').val();
+    //   console.log(genre);
+    //   for (var i = 0; i < $('.cd').length; i++) {
+      //     if ($('.cd').eq(i).find('.genre').text() == genre) {
+        //       console.log($('.cd').eq(i).find('.genre').text());
+        //       $('.cd').eq(i).show();
+        //     } else {
+          //       $('.cd').eq(i).hide();
+          //     }
+          //   };
+          // });
 });
 
 function processData(cds) {
